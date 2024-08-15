@@ -98,3 +98,5 @@ alias tmux-sessionizer='~/.local/scripts/tmux-sessionizer'
 # Shell integrations
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init --cmd cd zsh)"
+
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
