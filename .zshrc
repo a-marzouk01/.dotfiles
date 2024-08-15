@@ -87,15 +87,14 @@ setopt hist_find_no_dups
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls --color'
-alias ..='cd ..'
 alias l='ls -lha --color'
 alias ll='ls -lh --color'
-alias tmux='tmux source ~/.config/tmux/tmux.conf && tmux'
-alias tmux-sessionizer='~/.local/scripts/tmux-sessionizer'
+alias ..='cd ..'
 
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
-export RAYLIB_LIB_PATH=/usr/local/lib
-export RAYLIB_INCLUDE_PATH=/usr/local/include
+# Shell integrations
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
