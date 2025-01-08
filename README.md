@@ -18,7 +18,7 @@ $ sudo dnf install stow git
 ```
 ## installation
 ```console
-git clone git@github.com:a-marzouk01/dotfiles.git ~/dotfiles
+git clone git@github.com:a-marzouk01/.dotfiles.git ~/dotfiles
 ```
 
 ### that's it, have fun :)
