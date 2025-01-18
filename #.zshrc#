@@ -34,7 +34,6 @@ HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSiZE
 HISTDUP=erase
-export SAVEHIST=500000
 
 setopt appendhistory
 setopt sharehistory
@@ -61,5 +60,3 @@ alias cd="z"
 
 
 [ -f "/home/emka/.ghcup/env" ] && . "/home/emka/.ghcup/env" # ghcup-env
-export PATH="/home/emka/Downloads/luals/bin/lua-language-server:$PATH"
-export PATH=/usr/local/lua-language-server/bin:$PATH
