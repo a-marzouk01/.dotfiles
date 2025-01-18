@@ -1,1 +1,4 @@
-require("nyovel")
+require("config.lazy")
+require("config.options")
+require("config.maps")
+
