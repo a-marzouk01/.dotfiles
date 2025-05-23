@@ -2,7 +2,10 @@
 (load custom-file 'noerror 'nomessage)
 
 (require 'package)
-(setq package-enable-at-startup nil)
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ("gnu"   . "https://elpa.gnu.org/packages/")))
+(package-initialize)
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
@@ -17,6 +20,10 @@
 
 (setq-default c-basic-offset 4)
 (setq-default python-indent-offset 4)
+;; Use 4 spaces instead of tabs globally
+(setq-default indent-tabs-mode nil) ; Use spaces instead of tabs
+(setq-default tab-width 4)          ; Show tabs as 4 spaces
+(setq-default standard-indent 4)
 
 (global-whitespace-mode -1)
 
@@ -91,5 +98,25 @@
 (use-package magit
   :ensure t)
 
+;; Make sure you have go-mode available (M-x package-install RET go-mode RET)
+(require 'go-mode)
+
+;; Auto-use go-mode for .go files
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+
+;; When you save a Go file, run gofmt (or goimports) automatically:
+(defun my-go-mode-setup ()
+  ;; Use goimports if you have it installed (`go install golang.org/x/tools/cmd/goimports@latest`)
+  (setq gofmt-command "goimports")
+  ;; Format buffer before saving:
+  (add-hook 'before-save-hook #'gofmt-before-save nil t))
+
+(add-hook 'go-mode-hook #'my-go-mode-setup)
+
+(with-eval-after-load 'go-mode
+  (add-hook 'go-mode-hook
+            (lambda ()
+              (require 'eglot)
+              (eglot-ensure))))
 
 (provide 'init)
