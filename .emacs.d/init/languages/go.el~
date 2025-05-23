@@ -1,0 +1,11 @@
+(require 'go-mode)
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+(defun my-go-mode-setup ()
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook #'gofmt-before-save nil t))
+(add-hook 'go-mode-hook #'my-go-mode-setup)
+(with-eval-after-load 'go-mode
+  (require 'eglot)
+  (add-hook 'go-mode-hook #'eglot-ensure))
+
+(provide 'go)
