@@ -4,7 +4,7 @@
 (setq-default c-basic-offset 4)
 (setq-default python-indent-offset 4)
 
-(global-whitespace-mode -1)
+(global-whitespace-mode 1)
 (show-paren-mode 1)
 
 (provide 'editing)
